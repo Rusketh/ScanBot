@@ -1,0 +1,13 @@
+{
+	"type": "regulation",
+	"command": "!regulation8",
+	"alias": [ "!reg8" ],
+	"cooldown": 25,
+	"modonly": true,
+	"lifetime": 18,
+	"filter": "sf",
+	"audio": "regulation8.mp3",
+	"brief": "Regulation 8: Exercise caution when building bridges.",
+	"prompt": "Dear all Ficsit Pioneers, R&D would like to advise you to always exercise caution when building bridges over the unyielding depths of emptiness. R&D would like to emphasize that whilst falling for ever may seem like a fun idea, in reality it is actually quite boring.",
+	"message": "Dear all Ficsit Pioneers, R&D would like to advise you to always exercise caution when building bridges over the unyielding depths of emptiness. R&D would like to emphasize that whilst falling for ever may seem like a fun idea, in reality it is actually quite boring."
+}

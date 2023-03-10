@@ -1,0 +1,11 @@
+{
+	"user": "xtony_t_x",
+	"command": "!xtony",
+	"modonly": true,
+	"cooldown": 25,
+	"lifetime": 15,
+	"delay": 60,
+	"audio": "xtony_t_x.mp3",
+	"prompt": "Ficsit would like to welcome xtony_t_x and crew to the free coffee, available in the coffee shop.\nNote: Tony R&D advises to replace your bicycle with a Ficsit approved factory cart, now available in the awesome shop.",
+	"message": "Ficsit would like to welcome xtony_t_x and crew to the free coffee, available in the coffee shop."
+}

@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+
+	    <title>Ada Message Box</title>
+
+	    <meta http-equiv="content-type" content="text/html;charset=UTF-8" />
+
+	    <link rel="preconnect" href="https://fonts.gstatic.com">
+	    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400&display=swap" rel="stylesheet">
+
+		<script src="/socket.io/socket.io.js"></script>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+	    <style type="text/css">
+			html, body {
+			    margin: 0;
+			    padding: 0;
+			    border: 0;
+			    overflow: hidden;
+			}
+
+			/*#frame {
+			    width: 100vw;
+			    height: 100vh;
+			    width: 1920px; 
+			    height: 1080px;
+			    background-image: url(images/kibitz.png);
+			    background-size: cover;
+			    position: relative;
+			}*/
+
+			#messagebox {
+			    width: 40%;
+			    position: absolute;
+			    bottom: 12%;
+			    left: 30%;
+			    color: white;
+			    font-family: 'Open Sans', sans-serif;
+			    backdrop-filter: blur(0.7vh);
+			}
+
+			#messagebox header, #messagebox header * {
+			    position: relative;
+			    z-index: 2;
+			    margin: 0;
+			    padding: 0;
+			    font-size: 1.85vh;
+			    font-weight: normal;
+			    line-height: 4vh;
+			    letter-spacing: 0.4vh;
+			    vertical-align: middle;
+			    text-transform: uppercase;
+			}
+
+			#messagebox header {
+			    padding: 0 1.5vh;
+			}
+
+			#messagebox header:before{
+			    content: "";
+			    display: block;
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    z-index: 1;
+			    width: 100%;
+			    height: 100%;
+			    background-color: rgba(68,68,68, 0.7);
+			}
+
+			#messagebox header:after {
+			    content: "";
+			    clear: both;
+			    display: block;
+			}
+
+			#head1 {
+			    float: left;
+			}
+
+			#head2 {
+			    float: right;
+			}
+
+			#messagebox section, #messagebox section *{
+			    position: relative;
+			    z-index: 2;
+			    margin: 0;
+			    font-size: 1.5vh;
+			}
+
+			#messagebox section:before{
+			    content: "";
+			    display: block;
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    z-index: 1;
+			    width: 100%;
+			    height: 100%;
+			    background-color: rgba(17,17,17, 0.9);
+			}
+
+			#message {
+			    padding: 0.75vh 1.5vh 2.05vh 1.5vh;
+			}
+
+			#messagebox #skip{
+			    display: block;
+			    position: absolute;
+			    padding: 0 0.75vh;
+			    bottom: -1vh;
+			    right: -1vh;
+			    z-index: 2;
+			    font-size: 1.85vh;
+			    line-height: 2.8vh;
+			    vertical-align: top;
+			}
+
+			#messagebox #skip:before{
+			    content: "";
+			    display: block;
+			    position: absolute;
+			    top: 1px;
+			    left: 0;
+			    z-index: -1;
+			    width: 100%;
+			    height: 100%;
+			    background-color: rgba(68, 68, 68, 0.95);
+			}
+
+			#notificationlist {
+				height: 100vh;
+				width: 28vh;
+			    position: absolute;
+				top: 0;
+			    right: 0;
+			}
+
+			#notificationlist, #notificationlist *{
+			    margin: 0;
+			    padding: 0;
+			    border: 0;
+			}
+
+			#notificationlist section {
+				margin-top: 1vh;
+			    position: relative;
+				height: 7vh;
+				padding-left: 7vh;
+			    backdrop-filter: blur(0.7vh);
+			    color: white;
+			    font-family: 'Open Sans', sans-serif;
+				text-align: center;
+			}
+
+			#notificationlist section:before {
+			    content: "";
+			    display: block;
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    z-index: -1;
+				width: 100%;
+				height: 100%;
+			    background-color: rgba(17,17,17, 0.6);
+			}
+
+			@keyframes growing_border {
+				--border_width:1px;
+				0% {
+				background-size:    var(--border_width,1px) 0,
+									0 var(--border_width,1px),
+									0 var(--border_width,1px),
+									6vh 6vh;
+				}
+				20% {
+				background-size:	var(--border_width,1px) 100%,
+									0 var(--border_width,1px),
+									0 var(--border_width,1px),
+									6vh 6vh;
+				}
+				100% {
+				background-size:    var(--border_width,1px) 100%,
+									100% var(--border_width,1px),
+									100% var(--border_width,1px),
+									6vh 6vh;
+				}
+			}
+			
+			#notificationlist section:after {
+			    content: "";
+			    display: block;
+			    position: absolute;
+			    top: 0;
+			    left: 0;
+			    z-index: 0;
+				width: 100%;
+				height: 100%;
+				background-repeat: no-repeat;
+				background-image:   linear-gradient(to bottom, #FFA200 100%, #FFA200 100%),
+									linear-gradient(to right, #FFA200 100%, #FFA200 100%),
+									linear-gradient(to right, #FFA200 100%, #FFA200 100%),
+									var(--icon);
+				background-size:    var(--border_width,1px) 0,
+									0 var(--border_width,1px),
+									0 var(--border_width,1px),
+									6vh 6vh;
+				background-position:    0 50%,
+										0 0,
+										0 100%,
+										1vh 50%;
+				animation: growing_border var(--time,5s) ease-in forwards;
+			}
+
+			#notificationlist section h4 {
+			    font-size: 3vh;
+			}
+
+			#notificationlist section p {
+			    font-size: 1.5vh;
+			}
+
+			#nowplaying {
+				height: 3.5vh;
+			    position: absolute;
+				top: 0vh;
+			    left: 36vh;
+			    right: 36vh;
+			    color: rgba(255, 162, 0, 1);
+			    font-family: 'Open Sans', sans-serif;
+				font-size: 2.3vh;
+				line-height: 3vh;
+			    text-align: center;
+			    vertical-align: middle;
+			    background-color: rgba(35, 35, 35, 0.5)
+			}
+
+			#nowplaying .progress{
+				height: 0.5vh;
+			    position: absolute;
+			    left: 0px;
+			    right: 0px;
+			    bottom: -0.5vh;
+			    border-top: 1px solid rgba(0, 0, 0, 0.2);
+			    background-repeat: no-repeat;
+			    background-image: 	linear-gradient(to right,
+			    											rgba(255, 162, 0, 0.7) 0%,
+			    											rgba(255, 162, 0, 0.7) 50%,
+			    											rgba(35, 35, 35, 0.5) 50%,
+			    											rgba(35, 35, 35, 0.5) 100%
+			    					);
+			    background-size: 200% 100%;
+			    animation: playing_progress linear 1 forwards;
+			}
+
+			@keyframes playing_progress {
+				0% {
+					background-position: 100% 100%;
+				}
+				100% {
+					background-position: 0% 100%;
+				}
+			}
+			
+		</style>
+
+	</head>
+
+	<body>
+
+<!-- ---------------------------------------------------------------------------------------------- -->
+
+	<div id="frame">
+		<aside id="notificationlist">
+			<!--
+			<section style="--time:5s;--icon:url(CUP2-112.png)">
+				<h4>100</h4>
+				<p>5</p>
+			</section>
+			-->
+		</aside>
+
+		<aside id="nowplaying">
+			<div id="trackinfo">
+				<span id="title">The Moneky in my head</span>
+				- 
+				<span id="artist">Rusketh ft Marcus FreeStyle</span>
+			</div>
+			<div class="progress"></div>
+		</aside>
+
+		<article id="messagebox">
+            <header>
+                <h1 id="head1">ADA</h1>
+                <h2 id="head2">ADA@FICSIT.BIZ</h2>
+            </header>
+            <section>
+                <p id="message">The productivity display will help you to measure and improve the productivity of individual buildings to aid with optimization.</p>
+                <p id="skip">Skip (Enter)</p>
+            </section>
+        </article>
+	</div>
+
+<!-- ---------------------------------------------------------------------------------------------- -->
+
+		<script>
+
+			var socket;
+
+			if(typeof(io) == 'function') socket = io();
+
+/*--------------------------------------------------------------------------------------------------
+			PRELOAD IMAGES
+--------------------------------------------------------------------------------------------------*/
+			
+			const getAsset = function(file, dir) {
+				if ( file.startsWith("http://") || file.startsWith("https://") ) return file;
+				return "/" + dir + "/" + file;
+			};
+
+			if (socket) socket.on("images", function(images) { 
+					
+				for (let image of images) {
+					let obj = new Image();
+   					obj.src = getAsset(image, "images");
+				}
+
+			} );
+
+/*--------------------------------------------------------------------------------------------------
+			MESSAGE BOXES
+--------------------------------------------------------------------------------------------------*/
+
+			const messages = function(cmd) {
+				setTimeout( function() {
+					messages.queue.push(cmd);
+				}, (cmd.delay || 0) * 1000 );
+			}
+
+			messages.box = $("#messagebox");
+			messages.text = $("#message")
+			messages.box.fadeOut(1);
+
+			messages.queue = [];
+
+			messages.show = function(cmd) {
+				
+				try {
+					if (cmd.audio) {
+						cmd.audio_channel = new Audio("/audio/" + cmd.audio);
+						cmd.audio_channel.play();
+					}
+
+					if (cmd.prompt && cmd.prompt != "") {
+						messages.box.fadeIn(1000);
+						messages.text.text(cmd.prompt);
+					}
+				} catch (err) {
+					handelError("messages.show", err);
+				}
+
+			};
+
+			messages.hide = function(cmd) {
+
+				try {
+					if (cmd.audio_channel) {
+						cmd.audio_channel.pause();
+						cmd.audio_channel = null;
+					}
+
+					if (cmd.prompt && cmd.prompt != "") {
+						messages.box.fadeOut(1000);
+					}
+				} catch (err) {
+					handelError("messages.hide", err);
+				}
+			};
+
+			messages.next = function() {
+				let cmd = messages.queue.splice(0, 1)[0];
+
+				if (!cmd) {
+					setTimeout(messages.next, 1000);
+					return;
+				}
+
+				messages.show(cmd);
+
+				setTimeout( function() {
+
+					messages.hide(cmd);
+
+					setTimeout(messages.next, 5000);
+
+				}, (cmd.lifetime || 30) * 1000);
+			};
+
+			if(socket) socket.on("command", messages);
+
+			messages.next();	
+
+/*--------------------------------------------------------------------------------------------------
+			Toasts
+--------------------------------------------------------------------------------------------------*/
+			
+			const toasts = function(cmd) {
+				setTimeout( function() {
+					toasts.queue.push(cmd);
+				}, (cmd.delay || 0) * 1000 );
+			}
+
+			toasts.list = $("#notificationlist");
+
+			toasts.size = 0;
+			toasts.queue = [];
+
+			toasts.html = function(timeout, icon, text, subtitle = "") {
+				return $(`
+					<section style="--time:${timeout+0.7}s;--icon:url(${icon})">
+						<h4>${text}</h4>
+						<p>${subtitle}</p>
+					</section>
+				`);
+			};
+
+			toasts.create = function( { icon, text, subtitle, lifetime, audio, speed = "slow" } ) {
+				
+				let html = toasts.html(lifetime, getAsset(icon, "images"), text, subtitle);
+
+				toasts.size = toasts.size + 1;
+
+				toasts.list.append(html);
+
+				html.slideUp(0);
+
+				html.slideDown(speed, function() {
+
+					try {
+
+						if (audio) html.audio_channel = new Audio(getAsset(audio, "audio")); 
+
+						setTimeout( function() {
+							
+							try {
+								
+								if (html.audio_channel) {
+									html.audio_channel.pause();
+									html.audio_channel = null;
+								}
+
+								toasts.size = toasts.size - 1;
+
+								html.animate( { height: "0", opacity: "0", margin: "0" }, speed, "swing", function() {
+										html.remove();
+								} );
+							} catch (err) { 
+								handelError("toasts.create.setTimeout", err);
+							}
+
+						}, lifetime * 1000);
+
+					} catch (err) { 
+						handelError("toasts.create", err);
+					}
+				});
+
+				return html;
+			};
+
+			toasts.next = function() {
+
+				if (toasts.size >= 6) return;
+
+				let cmd = toasts.queue.splice(0, 1)[0];
+
+				if (!cmd) return;
+
+				toasts.create(cmd);
+			}
+
+			if (socket) socket.on("toast", toasts);
+
+			setInterval(toasts.next, 1000);
+
+/*--------------------------------------------------------------------------------------------------
+			Foobar
+--------------------------------------------------------------------------------------------------*/
+
+			const foobar = function( data ) {
+				foobar.update(data);
+			};
+
+			foobar.html = {};
+			foobar.html.title = $("#title");
+			foobar.html.artist = $("#artist");
+			foobar.html.info = $("#trackinfo");
+			foobar.html.progress = document.getElementsByClassName("progress")[0];
+			foobar.html.nowplaying = $("#nowplaying");
+
+			foobar.hidden = true;
+			foobar.html.nowplaying.fadeOut(0);
+
+			foobar.hide = function(time, cb) {
+				if (foobar.hidden) {
+					if (cb) cb();
+				} else {
+					foobar.hidden = true;
+					foobar.html.nowplaying.fadeOut(time, cb);
+				}
+			};
+
+			foobar.show = function(time, cb) {
+				if (!foobar.hidden) {
+					if (cb) cb();
+				} else {
+					foobar.hidden = false;
+					foobar.html.nowplaying.fadeIn(time, cb);
+				}
+			};
+
+			foobar.switch = function(time, artist, title) {
+				foobar.html.info.fadeOut(time, function() {
+					foobar.html.title.text(artist);
+					foobar.html.artist.text(title);
+					foobar.html.info.fadeIn(time);
+				});
+			}
+
+			foobar.setPlayback = function(length, time) {
+				if (foobar.hidden) return;
+
+				foobar.html.progress.style.animation = "none";
+				foobar.html.progress.offsetHeight;
+				foobar.html.progress.style.animation = null;
+
+				foobar.html.progress.style.animationDelay = (-(time + 1)) + "s";
+				foobar.html.progress.style.animationDuration = (length) + "s";
+			};
+
+			foobar.update = function( { playing = false, paused = false, artist = "", title = "", length = 0, time = 0, remaining = 0, changed = false } ) {
+
+				if (changed || !foobar.init) {
+					foobar.init = true;
+					foobar.switch("slow", artist, title);
+				} else if (playing && !paused) {
+					foobar.show();
+				} else {
+					foobar.hide();
+					return;
+				}
+
+				foobar.setPlayback(length, time);
+
+			};
+
+			if (foobar) socket.on("foobar", foobar);
+
+		</script>
+
+	</body>
+
+</html>

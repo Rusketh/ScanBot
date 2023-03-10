@@ -1,0 +1,11 @@
+{
+	"user": "daddycr0n",
+	"command": "!daddycr0n",
+	"modonly": true,
+	"cooldown": 25,
+	"lifetime": 28,
+	"delay": 60,
+	"audio": "daddycr0n.mp3",
+	"prompt": "Ficsit would like to welcome DaddyCr0n and crew to... Error... Error... Error... 404 - Race Track Not Found.",
+	"message": "Ficsit would like to welcome @DaddyCr0n crew to... Error."
+}

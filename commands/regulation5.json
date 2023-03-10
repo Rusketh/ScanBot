@@ -1,0 +1,13 @@
+{
+	"type": "regulation",
+	"command": "!regulation5",
+	"alias": [ "!reg5" ],
+	"cooldown": 25,
+	"modonly": true,
+	"lifetime": 16,
+	"filter": "sf",
+	"audio": "regulation5.mp3",
+	"brief": "Regulation 5: Abide by aviation protocol.",
+	"prompt": "Dear all Ficsit Pioneers, R&D would like to remind you that the taming of wild flying beasts is against aviation protocol. R&D would like to advise you Ficsit health insurance does not cover injury caused from falling from giant sky beasts.",
+	"message": "Dear all Ficsit Pioneers, R&D would like to remind you that the taming of wild flying beasts is against aviation protocol. R&D would like to advise you Ficsit health insurance does not cover injury caused from falling from giant sky beasts."
+}

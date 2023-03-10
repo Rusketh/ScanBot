@@ -1,0 +1,13 @@
+{
+	"type": "regulation",
+	"command": "!regulation1",
+	"alias": [ "!reg1" ],
+	"cooldown": 25,
+	"modonly": true,
+	"lifetime": 18,
+	"filter": "sf",
+	"audio": "regulation1.mp3",
+	"brief": "Regulation 1: Coffee must be consumed whilst travelling via train.",
+	"prompt": "Dear all Ficsit Pioneers, please be advised that as of this date, all activities regarding coffee must now be conducted whilst travelling via train. Any none train related coffee incidents will be reported to HR and a reprimand made on your permanent Ficsit employee record.",
+	"message": "Dear all Ficsit Pioneers, please be advised that as of this date, all activities regarding coffee must now be conducted whilst travelling via train. Any none train related coffee incidents will be reported to HR and a reprimand made on your permanent Ficsit employee record."
+}

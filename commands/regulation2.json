@@ -1,0 +1,13 @@
+{
+	"type": "regulation",
+	"command": "!regulation2",
+	"alias": [ "!reg2" ],
+	"cooldown": 25,
+	"modonly": true,
+	"lifetime": 19,
+	"filter": "sf",
+	"audio": "regulation2.mp3",
+	"brief": "Regulation 2: No smoking near Space Elevators.",
+	"prompt": "Dear all Ficsit Pioneers, R&D would like to remind you that due to the nature of the equipment, Space Elevator parts a highly vulnerable in the presence of tar. R&D would like to remind you that the consumption of Tabaco products is prohibited with in 2 miles of any Space Elevator deployment.",
+	"message": "Dear all Ficsit Pioneers, R&D would like to remind you that due to the nature of the equipment, Space Elevator parts a highly vulnerable in the presence of tar. R&D would like to remind you that the consumption of Tabaco products is prohibited with in 2 miles of any Space Elevator deployment."
+}

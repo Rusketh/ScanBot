@@ -1,0 +1,11 @@
+{
+	"type": "regulation",
+	"command": "!regulation24",
+	"alias": [ "!reg24" ],
+	"cooldown": 90,
+	"modonly": true,
+	"lifetime": 25,
+	"audio": "regulation24.mp3",
+	"prompt": "Dear all Ficsit Pioneers, R&D would like to congratulate @ScanVoice for completing a full 24 hour shift. Ficsit HR would like to remind all employees that sleeping is a necessity of life, Ficsit is not responsible for work place accidents caused by sleep deprivation. In the event you feel sleep deprived, Ficsit R&D suggests to, drink more coffee.",
+	"message": "Dear all Ficsit Pioneers, R&D would like to congratulate @ScanVoice for completing a full 24 hour shift. Ficsit HR would like to remind all employees that sleeping is a necessity of life, Ficsit is not responsible for work place accidents caused by sleep deprivation. In the event you feel sleep deprived, Ficsit R&D suggests to, drink more coffee."
+}

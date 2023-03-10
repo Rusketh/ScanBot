@@ -1,0 +1,8 @@
+{
+	"icon": "CUP2-112.png",
+	"command": "!coffee",
+	"subtitle": "Cup(s) of Coffee",
+	"cooldown": 30,
+	"lifetime": 10,
+	"message": "Scan voice has had coffee %value% times, %tiny% this stream!"
+}

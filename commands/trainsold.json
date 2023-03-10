@@ -1,0 +1,10 @@
+{
+	"command": "!trainsold",
+	"cooldown": 25,
+	"modonly": true,
+	"lifetime": 13,
+	"filter": "sf",
+	"audio": "bumpertrains.mp3",
+	"prompt": "Fiscit would like to congratulate you on the purchase of you're shiny new locomotive.",
+	"message": "Fiscit would like to congratulate you on the purchase of you're shiny new locomotive. Note: Ficsit R&D would like to remind all pioneers that Ficsit insurance does not cover the usage of locomotives as bumper cars."
+}

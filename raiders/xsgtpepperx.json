@@ -1,0 +1,11 @@
+{
+	"user": "xsgtpepperx",
+	"command": "!pepper",
+	"modonly": true,
+	"cooldown": 25,
+	"lifetime": 15,
+	"delay": 60,
+	"audio": "xsgtpepperx.mp3",
+	"prompt": "Ficsit would like to welcome xsgtpepperx and convoy to the complimentary coffee, available in the coffee shop.\nNote: Ficsit Truck insurance does not cover accidents caused by caffeine overdoses.",
+	"message": "Ficsit would like to welcome xsgtpepperx and convoy to the complimentary coffee, available in the coffee shop."
+}

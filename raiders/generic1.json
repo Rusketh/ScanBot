@@ -1,0 +1,11 @@
+{
+	"default": true,
+    "viewers": 5,
+	"modonly": true,
+	"cooldown": 25,
+	"lifetime": 15,
+	"delay": 60,
+	"audio": "raid1.mp3",
+	"prompt": "Dear Raiders, We are now approaching ScanVoice Central, get off here for funky tunes & fresh coffee. Please exit the train on the left and watch out for low-flying concrete.",
+	"message": "Dear Raiders, We are now approaching ScanVoice Central."
+}

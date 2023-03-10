@@ -1,0 +1,11 @@
+{
+	"user": "smerkin5000",
+	"command": "!smerkin",
+	"modonly": true,
+	"cooldown": 25,
+	"lifetime": 15,
+	"delay": 60,
+	"audio": "smerkin.mp3",
+	"prompt": "Ficsit would like to welcome the Smerkin crew to massage\nNote: complimentary coffee is avalible in the coffee shop.\nNote: Smerkin, Ficsit recomends topping up that chain saw with some Ficsit own brand solid bio fuel.",
+	"message": "Ficsit would like to welcome the Smerkin crew to massage."
+}

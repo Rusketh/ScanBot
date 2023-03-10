@@ -1,0 +1,8 @@
+{
+	"icon": "train-conductor112.png",
+	"command": "!infraction",
+	"subtitle": "infraction('s)",
+	"cooldown": 30,
+	"lifetime": 20,
+	"message": "Scan voice has disobeyed R&D %value% times, %tiny% times this stream!"
+}

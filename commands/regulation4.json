@@ -1,0 +1,13 @@
+{
+	"type": "regulation",
+	"command": "!regulation4",
+	"alias": [ "!reg4" ],
+	"cooldown": 25,
+	"modonly": true,
+	"lifetime": 19,
+	"filter": "sf",
+	"audio": "regulation4.mp3",
+	"brief": "Regulation 4: Caution with explosives.",
+	"prompt": "Dear all Ficsit pioneers. Due to recent health and safety concerns regarding explosives, HR would like to remind pioneers to avoid carrying large quantities of black powder in your pocket dimension. R&D advises to always read the safety labels.",
+	"message": "Dear all Ficsit pioneers. Due to recent health and safety concerns regarding explosives, HR would like to remind pioneers to avoid carrying large quantities of black powder in your pocket dimension. R&D advises to always read the safety labels."
+}

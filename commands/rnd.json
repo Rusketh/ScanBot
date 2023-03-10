@@ -1,0 +1,11 @@
+{
+	"command": "!r&d",
+	"alias": [ "!rnd" ],
+	"cooldown": 25,
+	"modonly": true,
+	"lifetime": 13,
+	"filter": "sf",
+	"audio": "rnd.mp3",
+	"prompt": "Fiscit Would like to remind all pioneers that R&D is always watching.",
+	"message": "Fiscit Would like to remind all pioneers that R&D is always watching."
+}

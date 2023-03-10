@@ -1,0 +1,12 @@
+{
+	"type": "regulation",
+	"command": "!regulation6",
+	"alias": [ "!reg6" ],
+	"cooldown": 25,
+	"modonly": true,
+	"lifetime": 23,
+	"audio": "regulation6.mp3",
+	"brief": "Regulation 6: Only use Official Ficsit Orange Toilet Paper.",
+	"prompt": "Dear all Ficsit employees. Whilst we fully appreciate that the \"Ficsit Fluffy & Pink Unicorn - Toilet Paper\" is a popular item amongst pioneers. Ficsit regrets to inform you that moving forward, all Ficsit toiletry items will now only be available in Official Ficsit Orange. We apologies for any inconvenience this may have caused.",
+	"message": "Dear all Ficsit employees. Whilst we fully appreciate that the \"Ficsit Fluffy & Pink Unicorn - Toilet Paper\" is a popular item amongst pioneers. Ficsit regrets to inform you that moving forward, all Ficsit toiletry items will now only be available in Official Ficsit Orange. We apologies for any inconvenience this may have caused."
+}

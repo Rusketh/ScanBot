@@ -1,0 +1,13 @@
+{
+	"type": "regulation",
+	"command": "!regulation3",
+	"alias": [ "!reg3" ],
+	"cooldown": 25,
+	"modonly": true,
+	"lifetime": 19,
+	"filter": "sf",
+	"audio": "regulation3.mp3",
+	"brief": "Regulation 3: Look left and right when crossing a train line.",
+	"prompt": "R&D would like to remind all pioneers to engage common sense in the presence of trains. Due to A recent spike in train related incidents and fatalities. R&D would like to further advise all pioneers, that they should always look left and right, when crossing an active train line.",
+	"message": "R&D would like to remind all pioneers to engage common sense in the presence of trains. Due to A recent spike in train related incidents and fatalities. R&D would like to further advise all pioneers, that they should always look left and right, when crossing an active train line."
+}
